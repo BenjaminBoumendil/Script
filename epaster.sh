@@ -1,7 +1,6 @@
 #!/bin/sh
 
 if [ $1 ] && [ $2 = 'create' ]; then
-	cd $HOME/epaster ; source bin/activate ; cd -
 	paster create -t django $1
 	cd $1 ; make install
 fi
@@ -25,7 +24,7 @@ Home View
 	touch mods_available/$1/__init__.py
 	touch mods_available/$1/settings.py
 	touch mods_available/$1/urls.py
-	cd mods_enabled ; ln -s ../mods_available/redir ; cd -
+	cd mods_enabled ; ln -s ../mods_available/$1 ; cd -
 	echo "# -*- coding: utf-8 -*-
 
 from django.conf.urls.i18n import i18n_patterns
@@ -53,7 +52,7 @@ from django.views.generic import TemplateView
 
 
 class HomeView(TemplateView):
-    template_name = 'redir/home.html'
+    template_name = '"$1"/home.html'
 " > $1/views.py
 
 	echo $1 "created with success"
