@@ -11,8 +11,11 @@ if [ $1 ]; then
         sudo service nginx status
     fi
 else
-    echo "arg1 :
+    echo "Usage : mynginx [option]
+
+Options :
     start : to start nginx
     stop : to stop nginx
-    reload : to reload nginx"
+    reload : to reload nginx
+    status : to get nginx status"
 fi

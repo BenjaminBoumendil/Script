@@ -11,6 +11,9 @@ if [ $1 ]; then
     	bin/django-instance migrate $1
     fi
 else
-    echo "Need the application name as first argument
-first migration : add init as second argument"
+    echo "Usage : migr [AppName] [option]
+
+options : 
+    init : for initial migration
+    fake : for fake migration"
 fi
