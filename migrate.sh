@@ -6,6 +6,8 @@ if [ $1 ]; then
     	bin/django-instance migrate $1
     elif [ $2 = 'fake' ]; then
         bin/django-instance migrate $1 --fake
+    elif [ $2 = 'update' ]; then
+        bin/django-instance schemamigration $1 --auto --update
     else
     	bin/django-instance schemamigration $1 --auto
     	bin/django-instance migrate $1
